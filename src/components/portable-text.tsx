@@ -1,5 +1,6 @@
 import {
   PortableText as PortableTextReact,
+  type PortableTextBlock,
   type PortableTextComponents,
 } from "@portabletext/react";
 import { codeToHtml } from "shiki";
@@ -80,5 +81,5 @@ const components: PortableTextComponents = {
 };
 
 export function PortableText({ value }: { value: unknown[] }) {
-  return <PortableTextReact value={value} components={components} />;
+  return <PortableTextReact value={value as PortableTextBlock[]} components={components} />;
 }
