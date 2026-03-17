@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    revalidateTag(type);
+    revalidateTag(type, "max");
     return NextResponse.json({ revalidated: true, type });
   } catch {
     return NextResponse.json(
