@@ -46,7 +46,7 @@ export default async function BlogPage() {
                 className="block group"
               >
                 <div className="flex items-baseline justify-between gap-4 mb-1">
-                  <h2 className="text-text-primary text-sm font-medium group-hover:text-accent transition-colors">
+                  <h2 className="text-text-primary text-sm font-medium group-hover:text-text-primary transition-colors">
                     {post.title}
                   </h2>
                   <time className="text-text-faint text-xs whitespace-nowrap">

@@ -14,7 +14,7 @@ export function RecentWriting({ posts }: { posts: Post[] }) {
             <a key={post.slug.current} href={`/blog/${post.slug.current}`}
               className={`flex justify-between items-baseline gap-4 group ${i < posts.length - 1 ? "pb-4 border-b border-surface" : ""}`}>
               <div>
-                <div className="text-text-primary text-sm mb-1 group-hover:text-accent transition-colors">{post.title}</div>
+                <div className="text-text-primary text-sm mb-1 group-hover:text-text-primary transition-colors">{post.title}</div>
                 <div className="text-text-faint text-xs">{post.excerpt}</div>
               </div>
               <div className="text-text-faint text-xs whitespace-nowrap">{formatDate(post.publishedAt)}</div>

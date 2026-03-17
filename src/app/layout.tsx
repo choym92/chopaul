@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
   title: {
-    default: "Youngmin Cho — Software Engineer",
+    default: "Youngmin Cho — Data Scientist",
     template: "%s | Youngmin Cho",
   },
   description:
-    "Software engineer building intelligent systems at the intersection of AI and finance.",
+    "Data scientist building intelligent systems at the intersection of AI and finance.",
   openGraph: {
     type: "website",
     locale: "en_US",

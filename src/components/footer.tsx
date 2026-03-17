@@ -19,7 +19,7 @@ export async function Footer() {
 
   return (
     <footer className="border-t border-divider py-8 px-6">
-      <div className="mx-auto max-w-[720px] flex justify-between items-center">
+      <div className="mx-auto max-w-[1200px] flex justify-between items-center">
         <div className="text-text-faint text-xs">&copy; {new Date().getFullYear()} Youngmin Cho</div>
         <div className="flex gap-4">
           {socials.map((s) => (

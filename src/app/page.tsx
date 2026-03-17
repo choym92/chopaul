@@ -35,7 +35,7 @@ export default async function Home() {
               "@type": "Person",
               name: "Youngmin Cho",
               url: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
-              jobTitle: "Software Engineer",
+              jobTitle: "Data Scientist",
               sameAs: [
                 author?.socialLinks?.github,
                 author?.socialLinks?.linkedin,
@@ -43,7 +43,7 @@ export default async function Home() {
             }),
           }}
         />
-        <Hero socialLinks={author?.socialLinks} />
+        <Hero />
         <FeaturedProject project={project} />
         <RecentWriting posts={posts || []} />
         <AboutSnippet bio={author?.bio ?? null} />

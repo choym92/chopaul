@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
           alignItems: "flex-start",
           width: "100%",
           height: "100%",
-          backgroundColor: "#0a0a0a",
+          backgroundColor: "#ffffff",
           padding: "80px",
         }}
       >
@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
           style={{
             fontSize: 14,
             letterSpacing: "3px",
-            color: "#666",
+            color: "#999999",
             marginBottom: "24px",
             fontFamily: "monospace",
           }}
@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
           style={{
             fontSize: 48,
             fontWeight: 300,
-            color: "#e5e5e5",
+            color: "#111111",
             lineHeight: 1.2,
             maxWidth: "900px",
           }}

@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { MobileMenu } from "./mobile-menu";
 
 const links = [
   { label: "Projects", home: "#projects", other: "/#projects" },
   { label: "Blog", home: "#blog", other: "/blog" },
   { label: "About", home: "#about", other: "/about" },
-  { label: "Resume", home: "/resume", other: "/resume" },
 ];
 
 export function Nav() {
@@ -35,12 +35,12 @@ export function Nav() {
   }, [isHome]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-bg/80 backdrop-blur-md">
-      <div className="mx-auto max-w-[720px] px-6 flex items-center justify-between h-14">
-        <a href="/" className="text-text-primary text-sm font-semibold tracking-[1px]">
-          CHOPAUL
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md">
+      <div className="mx-auto max-w-[1200px] px-6 flex items-center justify-between h-16">
+        <a href="/" className="flex items-center">
+          <Image src="/logo.svg" alt="chopaul" width={28} height={28} />
         </a>
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           {links.map((link) => {
             const href = isHome ? link.home : link.other;
             const isActive = isHome && activeSection === link.home.replace("#", "");
@@ -48,8 +48,8 @@ export function Nav() {
               <a
                 key={link.label}
                 href={href}
-                className={`text-xs transition-colors ${
-                  isActive ? "text-accent" : "text-text-muted hover:text-text-primary"
+                className={`text-sm transition-colors ${
+                  isActive ? "text-text-primary" : "text-text-muted hover:text-text-primary"
                 }`}
               >
                 {link.label}

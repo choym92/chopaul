@@ -14,7 +14,7 @@ export async function highlightCodeBlocks(body: unknown[]): Promise<unknown[]> {
         try {
           const html = await codeToHtml(block.code, {
             lang: block.language || "text",
-            theme: "github-dark-default",
+            theme: "github-light",
           });
           return { ...block, highlightedHtml: html };
         } catch {

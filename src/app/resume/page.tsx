@@ -163,7 +163,7 @@ export default async function ResumePage() {
                   href={`/projects/${project.slug.current}`}
                   className="block group"
                 >
-                  <h3 className="text-text-primary text-sm font-medium group-hover:text-accent transition-colors">
+                  <h3 className="text-text-primary text-sm font-medium group-hover:text-text-primary transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-text-muted text-sm leading-relaxed">
