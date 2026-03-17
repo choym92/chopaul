@@ -1,6 +1,6 @@
-import { toPlainText } from "@portabletext/react";
+import { toPlainText, PortableTextBlock } from "@portabletext/react";
 
-export function readingTime(body: unknown[]): string {
+export function readingTime(body: PortableTextBlock[]): string {
   const text = toPlainText(body);
   const words = text.split(/\s+/).length;
   const minutes = Math.ceil(words / 200);
