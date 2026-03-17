@@ -27,6 +27,22 @@ export default async function Home() {
     <>
       <Nav />
       <main>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Youngmin Cho",
+              url: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
+              jobTitle: "Software Engineer",
+              sameAs: [
+                author?.socialLinks?.github,
+                author?.socialLinks?.linkedin,
+              ].filter(Boolean),
+            }),
+          }}
+        />
         <Hero socialLinks={author?.socialLinks} />
         <FeaturedProject project={project} />
         <RecentWriting posts={posts || []} />

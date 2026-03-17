@@ -83,6 +83,22 @@ export default async function BlogPostPage({
     <>
       <Nav />
       <main className="pt-24 pb-16 px-6 mx-auto max-w-[720px]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: post.title,
+              datePublished: post.publishedAt,
+              description: post.excerpt,
+              author: {
+                "@type": "Person",
+                name: "Youngmin Cho",
+              },
+            }),
+          }}
+        />
         <div className="mb-10">
           <h1 className="text-text-primary text-2xl font-light mb-3">
             {post.title}
