@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
   title: {
-    default: "Youngmin Cho — Data Scientist",
+    default: "Youngmin Cho",
     template: "%s | Youngmin Cho",
   },
   description:
-    "Data scientist building intelligent systems at the intersection of AI and finance.",
+    "Building tools that think — portfolio and writing by Youngmin Cho.",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${geistMono.variable}`}>
       <body className="antialiased">
         {children}
         <Analytics />
