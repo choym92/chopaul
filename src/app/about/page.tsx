@@ -17,7 +17,6 @@ export const metadata: Metadata = {
 type AboutData = {
   name: string;
   title: string;
-  fullBio?: unknown[];
   skills?: { category: string; items: string[] }[];
   nowContent?: unknown[];
   nowUpdatedAt?: string;
@@ -56,15 +55,6 @@ export default async function AboutPage() {
             )}
           </div>
         </div>
-
-        {/* Full bio */}
-        {author?.fullBio && (
-          <section className="mb-12">
-            <article className="prose-custom">
-              <PortableText value={author.fullBio} />
-            </article>
-          </section>
-        )}
 
         {/* Skills grid */}
         {author?.skills && author.skills.length > 0 && (

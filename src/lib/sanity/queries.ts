@@ -40,7 +40,7 @@ export const projectBySlugQuery = `
 // About
 export const aboutQuery = `
   *[_type == "author"][0] {
-    name, title, fullBio, skills, nowContent, nowUpdatedAt, image
+    name, title, skills, nowContent, nowUpdatedAt, image
   }
 `;
 
