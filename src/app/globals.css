@@ -9,7 +9,6 @@
   --color-text-secondary: #444444;
   --color-text-muted: #888888;
   --color-text-faint: #bbbbbb;
-  --color-accent: #111111; /* deprecated — kept temporarily until accent migration in Task 5 */
   --color-link: #111111;
 
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;

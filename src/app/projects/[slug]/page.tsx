@@ -105,7 +105,7 @@ export default async function ProjectPage({
                 href={project.links.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-accent hover:text-text-primary transition-colors underline underline-offset-2"
+                className="text-xs text-text-primary border-b border-text-faint hover:border-text-primary transition-colors"
               >
                 Live Site
               </a>
@@ -115,7 +115,7 @@ export default async function ProjectPage({
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-accent hover:text-text-primary transition-colors underline underline-offset-2"
+                className="text-xs text-text-primary border-b border-text-faint hover:border-text-primary transition-colors"
               >
                 GitHub
               </a>
