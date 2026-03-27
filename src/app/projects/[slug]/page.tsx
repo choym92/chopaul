@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { sanityFetch } from "@/lib/sanity/client";
 import { allProjectsQuery, projectBySlugQuery } from "@/lib/sanity/queries";
 import { urlFor } from "@/lib/sanity/image";
+import Image from "next/image";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { PortableText, highlightCodeBlocks } from "@/components/portable-text";
@@ -78,10 +79,66 @@ export default async function ProjectPage({
     <>
       <Nav />
       <main className="pt-24 pb-16 px-6 mx-auto max-w-[720px]">
-        <h1 className="text-text-primary text-2xl font-light mb-3">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "CreativeWork",
+                name: project.title,
+                description: project.description,
+                url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com"}/projects/${slug}`,
+                author: {
+                  "@type": "Person",
+                  name: "Youngmin Cho",
+                  url: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
+                },
+                ...(project.techStack && { keywords: project.techStack.join(", ") }),
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Projects",
+                    item: `${process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com"}/#projects`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: project.title,
+                  },
+                ],
+              },
+            ]),
+          }}
+        />
+        {project.image && (
+          <div className="mb-8 -mx-6 md:mx-0 md:rounded-lg overflow-hidden bg-white">
+            <Image
+              src={urlFor(project.image).width(1440).auto("format").url()}
+              alt={project.title}
+              width={1440}
+              height={400}
+              className="w-full h-auto object-contain max-h-[360px] p-6"
+              priority
+            />
+          </div>
+        )}
+
+        <h1 className="text-text-primary text-3xl font-semibold mb-3">
           {project.title}
         </h1>
-        <p className="text-text-secondary text-sm leading-relaxed mb-6">
+        <p className="text-text-secondary text-base leading-relaxed mb-6">
           {project.description}
         </p>
 

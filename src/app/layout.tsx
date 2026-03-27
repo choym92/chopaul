@@ -21,19 +21,30 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
   title: {
-    default: "Youngmin Cho",
+    default: "Youngmin Cho — Data Scientist",
     template: "%s | Youngmin Cho",
   },
   description:
-    "Building tools that think — portfolio and writing by Youngmin Cho.",
+    "Data scientist building AI-powered tools. Portfolio, projects, and writing by Youngmin Cho.",
+  keywords: ["Youngmin Cho", "data scientist", "portfolio", "AI", "machine learning", "NLP"],
+  authors: [{ name: "Youngmin Cho", url: "https://www.chopaul.com" }],
+  creator: "Youngmin Cho",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "/",
     siteName: "Youngmin Cho",
-    images: [{ url: "/og-default.png", width: 1200, height: 630 }],
+    images: [{ url: "/og?title=Youngmin%20Cho%20%E2%80%94%20Data%20Scientist", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Youngmin Cho — Data Scientist",
+    description: "Data scientist building AI-powered tools. Portfolio, projects, and writing.",
   },
   robots: { index: true, follow: true },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

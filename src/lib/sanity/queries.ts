@@ -20,13 +20,13 @@ export const authorBioQuery = `
 // Blog
 export const allPostsQuery = `
   *[_type == "post"] | order(publishedAt desc) {
-    title, slug, excerpt, publishedAt, tags
+    title, slug, excerpt, publishedAt, tags, _updatedAt
   }
 `;
 
 export const postBySlugQuery = `
   *[_type == "post" && slug.current == $slug][0] {
-    title, slug, excerpt, body, publishedAt, tags, image
+    title, slug, excerpt, body, publishedAt, _updatedAt, tags, image
   }
 `;
 
@@ -60,5 +60,5 @@ export const resumePdfQuery = `
 
 // All projects (for sitemap + generateStaticParams)
 export const allProjectsQuery = `
-  *[_type == "project"] | order(order asc) { title, slug }
+  *[_type == "project"] | order(order asc) { title, slug, _updatedAt }
 `;

@@ -38,7 +38,7 @@ export function Nav() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md">
       <div className="mx-auto max-w-[1200px] px-6 flex items-center justify-between h-14">
         <a href="/" className="flex items-center">
-          <Image src="/logo.svg" alt="chopaul" width={40} height={40} />
+          <Image src="/logo.svg" alt="chopaul" width={64} height={64} />
         </a>
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => {

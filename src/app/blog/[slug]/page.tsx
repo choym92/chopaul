@@ -6,6 +6,7 @@ import { readingTime, formatDateFull } from "@/lib/utils";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { PortableText, highlightCodeBlocks } from "@/components/portable-text";
+import { TocSidebar } from "@/components/toc-sidebar";
 import { type PortableTextBlock } from "@portabletext/react";
 
 type Post = {
@@ -14,6 +15,7 @@ type Post = {
   excerpt: string;
   body: PortableTextBlock[];
   publishedAt: string;
+  _updatedAt?: string;
   tags?: string[];
   image?: { asset: { _ref: string } };
 };
@@ -82,49 +84,89 @@ export default async function BlogPostPage({
   return (
     <>
       <Nav />
-      <main className="pt-24 pb-16 px-6 mx-auto max-w-[720px]">
+      <main className="pt-24 pb-16 px-6 mx-auto max-w-[1200px]">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
-              headline: post.title,
-              datePublished: post.publishedAt,
-              description: post.excerpt,
-              author: {
-                "@type": "Person",
-                name: "Youngmin Cho",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                headline: post.title,
+                datePublished: post.publishedAt,
+                dateModified: post._updatedAt || post.publishedAt,
+                description: post.excerpt,
+                image: `${process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com"}/og?title=${encodeURIComponent(post.title)}`,
+                url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com"}/blog/${slug}`,
+                author: {
+                  "@type": "Person",
+                  name: "Youngmin Cho",
+                  url: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
+                },
+                publisher: {
+                  "@type": "Person",
+                  name: "Youngmin Cho",
+                  url: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
+                },
               },
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Blog",
+                    item: `${process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com"}/blog`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: post.title,
+                  },
+                ],
+              },
+            ]),
           }}
         />
-        <div className="mb-10">
-          <h1 className="text-text-primary text-2xl font-light mb-3">
-            {post.title}
-          </h1>
-          <div className="flex items-center gap-3 text-text-faint text-xs">
-            <time>{formatDateFull(post.publishedAt)}</time>
-            <span>&middot;</span>
-            <span>{readingTime(post.body)}</span>
-          </div>
-          {post.tags && post.tags.length > 0 && (
-            <div className="flex gap-2 mt-3">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[11px] text-text-faint border border-divider rounded px-1.5 py-0.5"
-                >
-                  {tag}
-                </span>
-              ))}
+        <div className="flex gap-12">
+          <div className="max-w-[720px] flex-1 min-w-0">
+            <div className="mb-10">
+              <h1 className="text-text-primary text-3xl font-semibold mb-3">
+                {post.title}
+              </h1>
+              <div className="flex items-center gap-3 text-text-muted text-sm">
+                <time>{formatDateFull(post.publishedAt)}</time>
+                <span>&middot;</span>
+                <span>{readingTime(post.body)}</span>
+              </div>
+              {post.tags && post.tags.length > 0 && (
+                <div className="flex gap-2 mt-3">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs text-text-muted border border-divider rounded px-1.5 py-0.5"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
-        </div>
 
-        <article className="prose-custom">
-          <PortableText value={highlightedBody} />
-        </article>
+            <article className="prose-custom">
+              <PortableText value={highlightedBody} />
+            </article>
+          </div>
+
+          <TocSidebar />
+        </div>
       </main>
       <Footer />
     </>

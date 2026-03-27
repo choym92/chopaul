@@ -44,31 +44,31 @@ function Callout({ value }: { value: { type: string; text: string } }) {
     tip: "border-green-500/30 bg-green-500/5",
   };
   return (
-    <div className={`my-6 border-l-2 pl-4 py-3 text-sm text-text-secondary ${colors[value.type] || colors.info}`}>
+    <div className={`my-6 border-l-2 pl-4 py-3 text-base text-text-secondary ${colors[value.type] || colors.info}`}>
       {value.text}
     </div>
   );
 }
 
-function SanityImage({ value }: { value: { asset: { _ref: string } } }) {
+function SanityImage({ value }: { value: { asset: { _ref: string }; alt?: string } }) {
   const url = urlFor(value).width(720).auto("format").url();
   return (
     <div className="my-6">
-      <Image src={url} alt="" width={720} height={400} className="rounded-lg" />
+      <Image src={url} alt={value.alt || ""} width={720} height={400} className="rounded-lg" />
     </div>
   );
 }
 
 const components: PortableTextComponents = {
   block: {
-    h2: ({ children }) => <h2 className="text-text-primary text-xl font-light mt-10 mb-4">{children}</h2>,
-    h3: ({ children }) => <h3 className="text-text-primary text-lg font-light mt-8 mb-3">{children}</h3>,
-    normal: ({ children }) => <p className="text-text-secondary text-sm leading-relaxed mb-4">{children}</p>,
-    blockquote: ({ children }) => <blockquote className="border-l-2 border-border pl-4 my-6 text-text-muted italic">{children}</blockquote>,
+    h2: ({ children }) => <h2 className="text-text-primary text-2xl font-medium mt-12 mb-5">{children}</h2>,
+    h3: ({ children }) => <h3 className="text-text-primary text-xl font-medium mt-10 mb-4">{children}</h3>,
+    normal: ({ children }) => <p className="text-text-secondary text-base leading-relaxed mb-5">{children}</p>,
+    blockquote: ({ children }) => <blockquote className="border-l-2 border-border pl-4 my-6 text-text-muted text-base italic">{children}</blockquote>,
   },
   marks: {
-    strong: ({ children }) => <strong className="text-text-primary font-medium">{children}</strong>,
-    code: ({ children }) => <code className="font-mono text-xs bg-surface px-1.5 py-0.5 rounded">{children}</code>,
+    strong: ({ children }) => <strong className="text-text-primary font-semibold">{children}</strong>,
+    code: ({ children }) => <code className="font-mono text-sm bg-surface px-1.5 py-0.5 rounded">{children}</code>,
     link: ({ value, children }) => (
       <a href={value?.href} target="_blank" rel="noopener noreferrer" className="text-link hover:text-text-primary underline underline-offset-2 transition-colors">{children}</a>
     ),

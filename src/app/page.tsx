@@ -30,16 +30,27 @@ export default async function Home() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Youngmin Cho",
-              url: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
-              sameAs: [
-                author?.socialLinks?.github,
-                author?.socialLinks?.linkedin,
-              ].filter(Boolean),
-            }),
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "Youngmin Cho",
+                url: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
+                description:
+                  "Data scientist building AI-powered tools. Portfolio, projects, and writing by Youngmin Cho.",
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Youngmin Cho",
+                jobTitle: "Data Scientist",
+                url: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
+                sameAs: [
+                  author?.socialLinks?.github,
+                  author?.socialLinks?.linkedin,
+                ].filter(Boolean),
+              },
+            ]),
           }}
         />
         <Hero />

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Hero() {
   return (
     <section id="top" className="min-h-[80vh] flex items-end px-6 pb-16 pt-24">
@@ -13,7 +15,15 @@ export function Hero() {
             Youngmin Cho
           </p>
         </div>
-        <div className="hidden md:block w-[320px] h-[400px] bg-surface border border-border rounded-2xl flex-shrink-0 mb-8" />
+        <div className="hidden md:block w-[320px] h-[400px] relative flex-shrink-0 mb-8 rounded-2xl overflow-hidden">
+          <Image
+            src="/profile.jpeg"
+            alt="Youngmin Cho"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
       </div>
     </section>
   );

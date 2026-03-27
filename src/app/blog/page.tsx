@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Thoughts on software engineering, AI, and building things.",
+  description: "Thoughts on data science, AI, and building things.",
 };
 
 type Post = {

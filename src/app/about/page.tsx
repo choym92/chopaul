@@ -33,6 +33,27 @@ export default async function AboutPage() {
     <>
       <Nav />
       <main className="pt-24 pb-16 px-6 mx-auto max-w-[720px]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfilePage",
+              mainEntity: {
+                "@type": "Person",
+                name: author?.name || "Youngmin Cho",
+                jobTitle: "Data Scientist",
+                url: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
+                ...(author?.image && {
+                  image: urlFor(author.image).width(400).height(400).auto("format").url(),
+                }),
+                ...(author?.skills && {
+                  knowsAbout: author.skills.flatMap((s) => s.items),
+                }),
+              },
+            }),
+          }}
+        />
         <SectionLabel>About</SectionLabel>
 
         {/* Header: image + name + title */}
