@@ -42,7 +42,7 @@ export default async function AboutPage() {
               mainEntity: {
                 "@type": "Person",
                 name: author?.name || "Youngmin Cho",
-                jobTitle: "Data Scientist",
+                jobTitle: "Data Science Lead",
                 url: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
                 ...(author?.image && {
                   image: urlFor(author.image).width(400).height(400).auto("format").url(),

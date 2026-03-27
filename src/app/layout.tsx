@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
   title: {
-    default: "Youngmin Cho — Data Scientist",
+    default: "Youngmin Cho — Data Science Lead",
     template: "%s | Youngmin Cho",
   },
   description:
-    "Data scientist building AI-powered tools. Portfolio, projects, and writing by Youngmin Cho.",
-  keywords: ["Youngmin Cho", "data scientist", "portfolio", "AI", "machine learning", "NLP"],
+    "Data science lead building AI-powered tools. Portfolio, projects, and writing by Youngmin Cho.",
+  keywords: ["Youngmin Cho", "data science lead", "portfolio", "AI", "machine learning", "NLP"],
   authors: [{ name: "Youngmin Cho", url: "https://www.chopaul.com" }],
   creator: "Youngmin Cho",
   openGraph: {
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Youngmin Cho — Data Scientist",
-    description: "Data scientist building AI-powered tools. Portfolio, projects, and writing.",
+    title: "Youngmin Cho — Data Science Lead",
+    description: "Data science lead building AI-powered tools. Portfolio, projects, and writing.",
   },
   robots: { index: true, follow: true },
   alternates: {

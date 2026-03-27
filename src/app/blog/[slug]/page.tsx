@@ -3,10 +3,13 @@ import { notFound } from "next/navigation";
 import { sanityFetch } from "@/lib/sanity/client";
 import { allPostsQuery, postBySlugQuery } from "@/lib/sanity/queries";
 import { readingTime, formatDateFull } from "@/lib/utils";
+import Image from "next/image";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { PortableText, highlightCodeBlocks } from "@/components/portable-text";
 import { TocSidebar } from "@/components/toc-sidebar";
+import { Breadcrumb } from "@/components/breadcrumb";
+import { urlFor } from "@/lib/sanity/image";
 import { type PortableTextBlock } from "@portabletext/react";
 
 type Post = {
@@ -135,6 +138,13 @@ export default async function BlogPostPage({
             ]),
           }}
         />
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Blog", href: "/blog" },
+            { label: post.title },
+          ]}
+        />
         <div className="flex gap-12">
           <div className="max-w-[720px] flex-1 min-w-0">
             <div className="mb-10">
@@ -159,6 +169,19 @@ export default async function BlogPostPage({
                 </div>
               )}
             </div>
+
+            {post.image?.asset && (
+              <div className="mb-10 rounded-lg overflow-hidden">
+                <Image
+                  src={urlFor(post.image).width(1440).quality(85).url()}
+                  alt={post.title}
+                  width={1440}
+                  height={578}
+                  className="w-full h-auto"
+                  priority
+                />
+              </div>
+            )}
 
             <article className="prose-custom">
               <PortableText value={highlightedBody} />

@@ -1,5 +1,5 @@
 import { sanityFetch } from "@/lib/sanity/client";
-import { featuredProjectQuery, recentPostsQuery, authorBioQuery } from "@/lib/sanity/queries";
+import { featuredProjectQuery, otherProjectsQuery, recentPostsQuery, authorBioQuery } from "@/lib/sanity/queries";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/home/hero";
@@ -13,12 +13,14 @@ type FeaturedProjectData = {
   image?: { asset: { _ref: string } };
 } | null;
 
-type RecentPost = { title: string; slug: { current: string }; excerpt: string; publishedAt: string };
+type OtherProject = { title: string; slug: { current: string }; description: string };
+type RecentPost = { title: string; slug: { current: string }; excerpt: string; publishedAt: string; image?: { asset: { _ref: string } } };
 type AuthorBio = { bio: string; socialLinks?: { github?: string; linkedin?: string; email?: string } } | null;
 
 export default async function Home() {
-  const [project, posts, author] = await Promise.all([
+  const [project, otherProjects, posts, author] = await Promise.all([
     sanityFetch<FeaturedProjectData>({ query: featuredProjectQuery, tags: ["project"] }),
+    sanityFetch<OtherProject[]>({ query: otherProjectsQuery, tags: ["project"] }),
     sanityFetch<RecentPost[]>({ query: recentPostsQuery, tags: ["post"] }),
     sanityFetch<AuthorBio>({ query: authorBioQuery, tags: ["author"] }),
   ]);
@@ -43,7 +45,7 @@ export default async function Home() {
                 "@context": "https://schema.org",
                 "@type": "Person",
                 name: "Youngmin Cho",
-                jobTitle: "Data Scientist",
+                jobTitle: "Data Science Lead",
                 url: process.env.NEXT_PUBLIC_SITE_URL || "https://chopaul.com",
                 sameAs: [
                   author?.socialLinks?.github,
@@ -54,7 +56,7 @@ export default async function Home() {
           }}
         />
         <Hero />
-        <FeaturedProject project={project} />
+        <FeaturedProject project={project} otherProjects={otherProjects || []} />
         <RecentWriting posts={posts || []} />
         <AboutSnippet bio={author?.bio ?? null} />
       </main>

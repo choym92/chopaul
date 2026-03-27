@@ -18,12 +18,12 @@ export async function Footer() {
   ].filter((s) => s.href);
 
   return (
-    <footer className="border-t border-divider py-8 px-6">
+    <footer className="border-t border-divider py-10 px-6">
       <div className="mx-auto max-w-[1200px] flex justify-between items-center">
-        <div className="text-text-faint text-xs">&copy; {new Date().getFullYear()} Youngmin Cho</div>
-        <div className="flex gap-4">
+        <div className="text-text-muted text-sm">&copy; {new Date().getFullYear()} Youngmin Cho</div>
+        <div className="flex gap-5">
           {socials.map((s) => (
-            <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="text-text-faint text-xs hover:text-text-secondary transition-colors">
+            <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="text-text-muted text-sm hover:text-text-primary transition-colors">
               {s.label}
             </a>
           ))}

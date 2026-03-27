@@ -7,7 +7,7 @@ export const featuredProjectQuery = `
 
 export const recentPostsQuery = `
   *[_type == "post"] | order(publishedAt desc)[0...3] {
-    title, slug, excerpt, publishedAt
+    title, slug, excerpt, publishedAt, image
   }
 `;
 
@@ -55,6 +55,13 @@ export const resumeQuery = `
 export const resumePdfQuery = `
   *[_type == "author"][0] {
     "resumeUrl": resumePdf.asset->url
+  }
+`;
+
+// Other projects (non-featured, for home sidebar)
+export const otherProjectsQuery = `
+  *[_type == "project" && featured != true] | order(order asc) {
+    title, slug, description, image
   }
 `;
 

@@ -1,8 +1,8 @@
-# Youngmin Cho — Data Scientist
-> Personal portfolio and technical blog by Youngmin Cho (Paul Cho), a data scientist building AI-powered tools.
+# Youngmin Cho — Data Science Lead
+> Personal portfolio and technical blog by Youngmin Cho (Paul Cho), a data science lead building AI-powered tools.
 
 ## About
-Youngmin Cho is a data scientist specializing in AI/ML, NLP, and autonomous data pipelines. This site showcases projects, technical writing, and professional background.
+Youngmin Cho is a data science lead specializing in AI/ML, NLP, and autonomous data pipelines. This site showcases projects, technical writing, and professional background.
 
 ## Key Pages
 - [Home](https://www.chopaul.com/): Portfolio overview with featured project and recent writing

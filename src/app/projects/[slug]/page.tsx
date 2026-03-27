@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { PortableText, highlightCodeBlocks } from "@/components/portable-text";
+import { Breadcrumb } from "@/components/breadcrumb";
 
 type Project = {
   title: string;
@@ -121,6 +122,13 @@ export default async function ProjectPage({
               },
             ]),
           }}
+        />
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Projects", href: "/#projects" },
+            { label: project.title },
+          ]}
         />
         {project.image && (
           <div className="mb-8 -mx-6 md:mx-0 md:rounded-lg overflow-hidden bg-white">
